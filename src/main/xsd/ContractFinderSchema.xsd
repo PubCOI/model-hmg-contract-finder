@@ -93,13 +93,7 @@
             <xs:element name="ProcedureType" type="xs:token" nillable="true"/>
             <xs:element name="ProcedureTypeOther" type="xs:token" nillable="true"/>
             <xs:element name="ProcedureAcceleratedJustification" type="xs:string" nillable="true"/>
-            <xs:element name="OjeuContractType" type="xs:token">
-                <xs:annotation>
-                    <xs:documentation>
-                        Services, Products
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
+            <xs:element name="OjeuContractType" type="OjeuContractTypeEnum"/>
             <xs:element name="IsFrameworkAgreement" type="xs:boolean"/>
             <xs:element name="IsExtensionPossible" type="xs:boolean"/>
         </xs:sequence>
@@ -249,4 +243,18 @@
             <xs:element name="AdditionalDetail" type="AdditionalDetailsType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
+    <xs:simpleType name="OjeuContractTypeEnum">
+        <xs:annotation>
+            <xs:documentation>
+                https://www.contractsfinder.service.gov.uk/apidocumentation/ResourceModel?modelName=OjeuContractType
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Works"/>
+            <xs:enumeration value="Services"/>
+            <xs:enumeration value="Products"/>
+            <xs:enumeration value="NotApplicable"/>
+            <xs:enumeration value="NotSpecified"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
