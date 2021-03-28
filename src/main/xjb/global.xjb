@@ -28,7 +28,7 @@
 <!--    </jaxb:globalBindings>-->
     <jaxb:bindings schemaLocation="../xsd/ContractFinderSchema.xsd">
         <jaxb:schemaBindings>
-            <jaxb:package name="org.pubcoi.fos.models.cf"/>
+            <jaxb:package name="org.pubcoi.cdm.cf"/>
         </jaxb:schemaBindings>
     </jaxb:bindings>
 </jaxb:bindings>
