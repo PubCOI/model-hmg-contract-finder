@@ -21,14 +21,15 @@
                xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                jaxb:extensionBindingPrefixes="xjc">
-
-<!--    <jaxb:globalBindings>-->
-<!--        <xjc:simple />-->
-<!--        <xjc:serializable uid="-1" />-->
-<!--    </jaxb:globalBindings>-->
     <jaxb:bindings schemaLocation="../xsd/ContractFinderSchema.xsd">
         <jaxb:schemaBindings>
             <jaxb:package name="org.pubcoi.cdm.cf"/>
         </jaxb:schemaBindings>
+        <jaxb:bindings node="//xs:complexType[@name='AwardsType']//xs:element[@name='AwardDetail']">
+            <jaxb:property name="awardDetails"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xs:complexType[@name='AdditionalDetailsListType']//xs:element[@name='AdditionalDetail']">
+            <jaxb:property name="detailsList"/>
+        </jaxb:bindings>
     </jaxb:bindings>
 </jaxb:bindings>
