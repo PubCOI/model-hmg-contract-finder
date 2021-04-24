@@ -19,53 +19,54 @@
   -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://schemas.pubcoi.org/cf/ContractFinderSchema"
+           xmlns:cf="http://schemas.pubcoi.org/cf/ContractFinderSchema"
+           xmlns:bt="http://schemas.pubcoi.org/cf/BaseTypes"
+           attributeFormDefault="qualified"
            elementFormDefault="qualified">
+
+    <xs:import schemaLocation="BaseTypes.xsd" namespace="http://schemas.pubcoi.org/cf/BaseTypes"/>
 
     <xs:element name="ArrayOfFullNotice">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="FullNotice" type="FullNotice" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="FullNotice" type="cf:FullNotice" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
     <xs:complexType name="FullNotice">
         <xs:sequence>
-            <xs:element name="Id" type="uuid" minOccurs="0"/>
-            <xs:element name="Notice" type="NoticeType" minOccurs="0"/>
+            <xs:element name="Id" type="bt:uuid" minOccurs="0"/>
+            <xs:element name="Notice" type="cf:NoticeType" minOccurs="0"/>
             <xs:element name="CreatedByUser" type="xs:token" minOccurs="0"/>
             <xs:element name="CreatedDate" type="xs:dateTime" minOccurs="0"/>
             <xs:element name="LastUpdatedByUser" type="xs:token" minOccurs="0"/>
             <xs:element name="LastUpdatedDate" type="xs:dateTime" minOccurs="0"/>
-            <xs:element name="Awards" type="AwardsType"/>
+            <xs:element name="Awards" type="cf:AwardsType"/>
             <xs:element name="IsPublished" type="xs:boolean"/>
             <xs:element name="IsPreAwarded" type="xs:boolean"/>
-            <xs:element name="Organisation" type="OrganisationType"/>
-            <xs:element name="AdditionalDetails" type="AdditionalDetailsListType"/>
+            <xs:element name="Organisation" type="cf:OrganisationType"/>
+            <xs:element name="AdditionalDetails" type="cf:AdditionalDetailsListType"/>
             <xs:element name="WithdrawnByUser" type="xs:token" minOccurs="0"/>
             <xs:element name="WithdrawnDate" type="xs:dateTime" minOccurs="0"/>
             <xs:element name="WithdrawnReason" type="xs:token" minOccurs="0"/>
-            <xs:element name="CpvCodes" type="CpvCodeType" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="PublishedVersion" type="PublishedNoticeVersion" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="CpvCodes" type="cf:CpvCodeType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="PublishedVersion" type="cf:PublishedNoticeVersion" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="NumberOfViews" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="AwardsType">
         <xs:sequence>
-            <xs:element name="AwardDetail" type="AwardDetailType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="AwardDetail" type="cf:AwardDetailType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="NoticeType">
+    <xs:group name="NoticeBase">
         <xs:sequence>
-            <xs:element name="Id" type="uuid"/>
-            <xs:element name="ParentId" type="uuid" minOccurs="0"/>
-            <xs:element name="ParentIdentifier" type="uuid" nillable="true"/>
-            <xs:element name="LinkReason" type="xs:string" minOccurs="0"/>
-            <xs:element name="Version" type="xs:int" minOccurs="0"/>
-            <xs:element name="ContactDetails" type="ContactDetailsType"/>
-            <xs:element name="Identifier" type="xs:string"/>
+            <xs:element name="Id" type="bt:uuid"/>
+            <xs:element name="ParentId" type="bt:uuid" minOccurs="0"/>
             <xs:element name="Title" type="xs:string" minOccurs="0"/>
             <xs:element name="Description" type="xs:string" minOccurs="0"/>
             <xs:element name="CpvDescription" type="xs:token" minOccurs="0">
@@ -74,16 +75,50 @@
                 </xs:annotation>
             </xs:element>
             <xs:element name="PublishedDate" type="xs:dateTime"/>
-            <xs:element name="ApproachMarketDate" type="xs:dateTime" minOccurs="0"/>
             <xs:element name="DeadlineDate" type="xs:dateTime"/>
+            <xs:element name="ApproachMarketDate" type="xs:dateTime" minOccurs="0"/>
             <xs:element name="ValueLow" type="xs:double" nillable="true"/>
             <xs:element name="ValueHigh" type="xs:double" nillable="true"/>
             <xs:element name="Postcode" type="xs:token" nillable="true"/>
+            <xs:element name="IsSuitableForSme" type="xs:boolean"/>
+            <xs:element name="IsSuitableForVco" type="xs:boolean"/>
+            <xs:element name="NoticeType" type="xs:token" minOccurs="0"/>
+            <xs:element name="NoticeStatus" type="xs:token" minOccurs="0"/>
             <xs:element name="Region" type="xs:token" nillable="true"/>
-            <xs:element name="Nationwide" type="xs:boolean" minOccurs="0"/>
-            <xs:element name="Location" type="LocationType"/>
+            <xs:element name="LastNotifiableUpdate" type="xs:dateTime" nillable="true"/>
+            <xs:element name="OrganisationName" type="xs:token"/>
+            <xs:element name="Sector" type="xs:token" nillable="true"/>
+            <xs:element name="CpvCodes" type="xs:token" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="Start" type="xs:dateTime"/>
             <xs:element name="End" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:group>
+
+    <xs:complexType name="NoticeIndex">
+        <xs:sequence>
+            <xs:group ref="cf:NoticeBase"/>
+            <xs:element name="NoticeIdentifier" type="bt:uuid" nillable="true"/>
+            <xs:element name="CpvDescriptionExpanded" type="xs:token" minOccurs="0"/>
+            <xs:element name="AwardedDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="AwardedSupplier" type="xs:token" minOccurs="0"/>
+            <xs:element name="Coordinates" type="xs:token" minOccurs="0"/>
+            <xs:element name="IsSubNotice" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="AwardedToSme" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="AwardedToVcse" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="CpvCodesExtended" type="xs:token" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="NoticeType">
+        <xs:sequence>
+            <xs:group ref="cf:NoticeBase"/>
+            <xs:element name="ParentIdentifier" type="bt:uuid" nillable="true"/>
+            <xs:element name="LinkReason" type="xs:string" minOccurs="0"/>
+            <xs:element name="Version" type="xs:int" minOccurs="0"/>
+            <xs:element name="ContactDetails" type="cf:ContactDetailsType"/>
+            <xs:element name="Identifier" type="xs:string"/>
+            <xs:element name="Nationwide" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="Location" type="cf:LocationType"/>
             <xs:element name="Type" type="xs:token">
                 <xs:annotation>
                     <xs:documentation>
@@ -91,7 +126,6 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="CpvCodes" type="xs:token" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="Status" type="xs:token">
                 <xs:annotation>
                     <xs:documentation>
@@ -99,26 +133,17 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="IsSuitableForSme" type="xs:boolean"/>
-            <xs:element name="IsSuitableForVco" type="xs:boolean"/>
             <xs:element name="SupplyChain" type="xs:boolean"/>
-            <xs:element name="LastNotifiableUpdate" type="xs:dateTime" nillable="true"/>
-            <xs:element name="OrganisationName" type="xs:token"/>
-            <xs:element name="Sector" type="xs:token" nillable="true"/>
             <xs:element name="ProcedureType" type="xs:token" nillable="true"/>
             <xs:element name="ProcedureTypeOther" type="xs:token" nillable="true"/>
             <xs:element name="ProcedureAcceleratedJustification" type="xs:string" nillable="true"/>
-            <xs:element name="OjeuContractType" type="OjeuContractTypeEnum"/>
+            <xs:element name="OjeuContractType" type="cf:OjeuContractTypeEnum"/>
             <xs:element name="IsFrameworkAgreement" type="xs:boolean"/>
             <xs:element name="IsExtensionPossible" type="xs:boolean"/>
             <xs:element name="AnnexDOption" type="xs:token" minOccurs="0"/>
             <xs:element name="ReasonContractLawful" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
-
-    <xs:simpleType name="uuid">
-        <xs:restriction base="xs:token"/>
-    </xs:simpleType>
 
     <xs:complexType name="ContactDetailsType">
         <xs:sequence>
@@ -144,8 +169,8 @@
     <xs:complexType name="AwardDetailType">
         <xs:sequence>
             <xs:element name="Id" type="xs:token"/>
-            <xs:element name="NoticeId" type="uuid"/>
-            <xs:element name="ParentId" type="uuid" nillable="true"/>
+            <xs:element name="NoticeId" type="bt:uuid"/>
+            <xs:element name="ParentId" type="bt:uuid" nillable="true"/>
             <xs:element name="Value" type="xs:long"/>
             <xs:element name="SupplierName" type="xs:token"/>
             <xs:element name="SupplierAddress" type="xs:string"/>
@@ -155,7 +180,7 @@
             <xs:element name="EndDate" type="xs:dateTime"/>
             <xs:element name="AwardedDate" type="xs:dateTime"/>
             <xs:element name="Reference" type="xs:token"/>
-            <xs:element name="ReferenceType" type="ReferenceTypeE"/>
+            <xs:element name="ReferenceType" type="cf:ReferenceTypeE"/>
             <xs:element name="AwardedProcedureType" type="xs:token">
                 <xs:annotation>
                     <xs:documentation>
@@ -170,7 +195,7 @@
             <xs:element name="AdditionalDetail" type="xs:string" nillable="true"/>
             <xs:element name="AwardedToSME" type="xs:boolean"/>
             <xs:element name="AwardedToVCSO" type="xs:boolean"/>
-            <xs:element name="AwardGuid" type="uuid"/>
+            <xs:element name="AwardGuid" type="bt:uuid"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -199,14 +224,14 @@
 
     <xs:complexType name="AdditionalDetailsListType">
         <xs:sequence>
-            <xs:element name="AdditionalDetail" type="AdditionalDetailType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="AdditionalDetail" type="cf:AdditionalDetailType" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="AdditionalDetailType">
         <xs:sequence>
-            <xs:element name="Id" type="uuid"/>
-            <xs:element name="NoticeId" type="uuid"/>
+            <xs:element name="Id" type="bt:uuid"/>
+            <xs:element name="NoticeId" type="bt:uuid"/>
             <xs:element name="Description" type="xs:string"/>
             <xs:element name="DataType" type="xs:token"/>
             <xs:element name="TextData" type="xs:string" nillable="true"/>
@@ -214,7 +239,7 @@
             <xs:element name="MimeType" type="xs:token" nillable="true"/>
             <xs:element name="Filename" type="xs:token" nillable="true"/>
             <xs:element name="FileContent" type="xs:byte" nillable="true"/>
-            <xs:element name="AwardGuid" type="uuid" nillable="true"/>
+            <xs:element name="AwardGuid" type="bt:uuid" nillable="true"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -233,7 +258,7 @@
             <xs:element name="DateChanged" type="xs:dateTime"/>
             <xs:element name="NoticeStatus" type="xs:token"/>
             <xs:element name="NoticeType" type="xs:token"/>
-            <xs:element name="PublishedNoticeId" type="uuid"/>
+            <xs:element name="PublishedNoticeId" type="bt:uuid"/>
             <xs:element name="VersionNumber" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>

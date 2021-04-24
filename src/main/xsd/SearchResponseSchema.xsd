@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright 2021 PubCOI.org
+  ~
+  ~ This program is free software; you can redistribute it and/or
+  ~ modify it under the terms of the GNU Lesser General Public
+  ~ License as published by the Free Software Foundation; either
+  ~ version 3 of the License, or (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program; if not, write to the Free Software Foundation,
+  ~ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://schemas.pubcoi.org/cf/SearchResponseSchema"
+           xmlns:ns="http://schemas.pubcoi.org/cf/SearchResponseSchema"
+           xmlns:cf="http://schemas.pubcoi.org/cf/ContractFinderSchema"
+           attributeFormDefault="qualified"
+           elementFormDefault="qualified">
+
+    <xs:import schemaLocation="ContractFinderSchema.xsd" namespace="http://schemas.pubcoi.org/cf/ContractFinderSchema"/>
+
+    <xs:element name="NoticeSearchResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ByRegion">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Items">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="KeyValuePairOfstringlong" type="ns:KVPType" minOccurs="0"
+                                                    maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Other" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ByStatus">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Items">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="KeyValuePairOfNullableOfNoticeStatus" type="ns:KVPType"
+                                                    minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Other" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ByType">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Items">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="KeyValuePairOfNullableOfNoticeType" type="ns:KVPType"
+                                                    minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Other" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="HitCount" type="xs:int"/>
+                <xs:element name="MaxHits" type="xs:int"/>
+                <xs:element name="NoticeList">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="HitOfNoticeIndex" type="ns:NoticeHitType" minOccurs="0"
+                                        maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="KVPType">
+        <xs:sequence>
+            <xs:element name="key" type="xs:token"/>
+            <xs:element name="value" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="NoticeHitType">
+        <xs:sequence>
+            <xs:element name="Item" type="cf:NoticeIndex"/>
+            <xs:element name="Score" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

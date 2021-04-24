@@ -32,4 +32,9 @@
             <jaxb:property name="detailsList"/>
         </jaxb:bindings>
     </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../xsd/SearchResponseSchema.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="org.pubcoi.cdm.cf.search"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
 </jaxb:bindings>

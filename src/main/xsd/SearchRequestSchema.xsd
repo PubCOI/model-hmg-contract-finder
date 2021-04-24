@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright 2021 PubCOI.org
+  ~
+  ~ This program is free software; you can redistribute it and/or
+  ~ modify it under the terms of the GNU Lesser General Public
+  ~ License as published by the Free Software Foundation; either
+  ~ version 3 of the License, or (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program; if not, write to the Free Software Foundation,
+  ~ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  -->
+
+<xs:schema
+        targetNamespace="http://schemas.pubcoi.org/cf/SearchRequestSchema"
+        xmlns:bt="http://schemas.pubcoi.org/cf/BaseTypes"
+        xmlns:ns="http://schemas.pubcoi.org/cf/SearchRequestSchema"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        attributeFormDefault="qualified"
+        elementFormDefault="qualified">
+
+    <xs:import schemaLocation="BaseTypes.xsd" namespace="http://schemas.pubcoi.org/cf/BaseTypes"/>
+
+    <xs:element name="NoticeSearchRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="SearchCriteria" type="ns:SearchCriteriaType"/>
+                <xs:element name="Size" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="SearchCriteriaType">
+        <xs:sequence>
+            <xs:element name="ApproachMarketFrom" type="xs:date" nillable="true"/>
+            <xs:element name="ApproachMarketTo" type="xs:date" nillable="true"/>
+            <xs:element name="AwardedFrom" type="xs:date" nillable="true"/>
+            <xs:element name="AwardedTo" type="xs:date" nillable="true"/>
+            <xs:element name="DeadlineFrom" type="xs:date" nillable="true"/>
+            <xs:element name="DeadlineTo" type="xs:date" nillable="true"/>
+            <xs:element name="IsSubcontract" type="xs:boolean" nillable="true"/>
+            <xs:element name="Keyword" type="xs:token"/>
+            <xs:element name="LastNotifiableUpdateFrom" type="xs:date" nillable="true"/>
+            <xs:element name="Postcode" type="xs:token" nillable="true"/>
+            <xs:element name="PublishedFrom" type="xs:date" nillable="true"/>
+            <xs:element name="PublishedTo" type="xs:date" nillable="true"/>
+            <xs:element name="QueryString" type="xs:token" nillable="true"/>
+            <xs:element name="Radius" type="xs:float" nillable="true"/>
+            <xs:element name="Regions" type="xs:token" nillable="true"/>
+            <xs:element name="Statuses">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="NoticeStatus" type="bt:NoticeStatusEnum" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SuitableForSme" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="SuitableForVco" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="AwardedToSme" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="AwardedToVcse" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="Types" nillable="true">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="NoticeType" type="bt:NoticeTypeEnum" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ValueFrom" type="xs:float" minOccurs="0"/>
+            <xs:element name="ValueTo" type="xs:float" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
