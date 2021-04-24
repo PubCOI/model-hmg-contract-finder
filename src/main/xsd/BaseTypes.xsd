@@ -16,10 +16,7 @@
   ~ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
   -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://schemas.pubcoi.org/cf/BaseTypes"
-           attributeFormDefault="qualified"
-           elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
     <xs:simpleType name="uuid">
         <xs:restriction base="xs:token"/>
@@ -42,5 +39,51 @@
             <xs:enumeration value="PreProcurement"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:group name="NoticeBase">
+        <xs:sequence>
+            <xs:element name="Id" type="uuid"/>
+            <xs:element name="ParentId" type="uuid" minOccurs="0"/>
+            <xs:element name="Title" type="xs:string" minOccurs="0"/>
+            <xs:element name="Description" type="xs:string" minOccurs="0"/>
+            <xs:element name="CpvDescription" type="xs:token" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Common Procurement Vocabulary description</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PublishedDate" type="xs:dateTime"/>
+            <xs:element name="DeadlineDate" type="xs:dateTime"/>
+            <xs:element name="ApproachMarketDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="ValueLow" type="xs:double" nillable="true"/>
+            <xs:element name="ValueHigh" type="xs:double" nillable="true"/>
+            <xs:element name="Postcode" type="xs:token" nillable="true"/>
+            <xs:element name="IsSuitableForSme" type="xs:boolean"/>
+            <xs:element name="IsSuitableForVco" type="xs:boolean"/>
+            <xs:element name="NoticeType" type="xs:token" minOccurs="0"/>
+            <xs:element name="NoticeStatus" type="xs:token" minOccurs="0"/>
+            <xs:element name="Region" type="xs:token" nillable="true"/>
+            <xs:element name="LastNotifiableUpdate" type="xs:dateTime" nillable="true"/>
+            <xs:element name="OrganisationName" type="xs:token"/>
+            <xs:element name="Sector" type="xs:token" nillable="true"/>
+            <xs:element name="CpvCodes" type="xs:token" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Start" type="xs:dateTime"/>
+            <xs:element name="End" type="xs:dateTime"/>
+        </xs:sequence>
+    </xs:group>
+
+    <xs:complexType name="NoticeIndex">
+        <xs:sequence>
+            <xs:group ref="NoticeBase"/>
+            <xs:element name="NoticeIdentifier" type="uuid" nillable="true"/>
+            <xs:element name="CpvDescriptionExpanded" type="xs:token" minOccurs="0"/>
+            <xs:element name="AwardedDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="AwardedSupplier" type="xs:token" minOccurs="0"/>
+            <xs:element name="Coordinates" type="xs:token" minOccurs="0"/>
+            <xs:element name="IsSubNotice" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="AwardedToSme" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="AwardedToVcse" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="CpvCodesExtended" type="xs:token" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
 
 </xs:schema>

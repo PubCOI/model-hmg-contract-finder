@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--
   ~ Copyright 2021 PubCOI.org
   ~
@@ -16,19 +15,14 @@
   ~ along with this program; if not, write to the Free Software Foundation,
   ~ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
   -->
-<jaxb:bindings version="2.1"
+<jaxb:bindings version="2.0"
                xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
                xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <jaxb:globalBindings>
-        <jaxb:javaType name="org.pubcoi.cdm.cf.NoticeStatusEnum" xmlType="NoticeStatusEnum"/>
-        <jaxb:javaType name="org.pubcoi.cdm.cf.NoticeTypeEnum" xmlType="NoticeTypeEnum"/>
-    </jaxb:globalBindings>
-
-    <jaxb:bindings schemaLocation="*">
-        <jaxb:bindings node="//xs:complexType[@name='NoticeIndex']" multiple="true" required="false">
-            <jaxb:class ref="org.pubcoi.cdm.cf.NoticeIndex"/>
-        </jaxb:bindings>
+    <jaxb:bindings schemaLocation="../xsd/SearchRequestSchema.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="org.pubcoi.cdm.cf.search.request"/>
+        </jaxb:schemaBindings>
     </jaxb:bindings>
 
 </jaxb:bindings>

@@ -18,14 +18,9 @@
   ~ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
   -->
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://schemas.pubcoi.org/cf/SearchResponseSchema"
-           xmlns:ns="http://schemas.pubcoi.org/cf/SearchResponseSchema"
-           xmlns:cf="http://schemas.pubcoi.org/cf/ContractFinderSchema"
-           attributeFormDefault="qualified"
-           elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:import schemaLocation="ContractFinderSchema.xsd" namespace="http://schemas.pubcoi.org/cf/ContractFinderSchema"/>
+    <xs:include schemaLocation="BaseTypes.xsd"/>
 
     <xs:element name="NoticeSearchResponse">
         <xs:complexType>
@@ -36,7 +31,7 @@
                             <xs:element name="Items">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="KeyValuePairOfstringlong" type="ns:KVPType" minOccurs="0"
+                                        <xs:element name="KeyValuePairOfstringlong" type="KVPType" minOccurs="0"
                                                     maxOccurs="unbounded"/>
                                     </xs:sequence>
                                 </xs:complexType>
@@ -51,7 +46,7 @@
                             <xs:element name="Items">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="KeyValuePairOfNullableOfNoticeStatus" type="ns:KVPType"
+                                        <xs:element name="KeyValuePairOfNullableOfNoticeStatus" type="KVPType"
                                                     minOccurs="0" maxOccurs="unbounded"/>
                                     </xs:sequence>
                                 </xs:complexType>
@@ -66,7 +61,7 @@
                             <xs:element name="Items">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="KeyValuePairOfNullableOfNoticeType" type="ns:KVPType"
+                                        <xs:element name="KeyValuePairOfNullableOfNoticeType" type="KVPType"
                                                     minOccurs="0" maxOccurs="unbounded"/>
                                     </xs:sequence>
                                 </xs:complexType>
@@ -80,7 +75,7 @@
                 <xs:element name="NoticeList">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="HitOfNoticeIndex" type="ns:NoticeHitType" minOccurs="0"
+                            <xs:element name="HitOfNoticeIndex" type="NoticeHitType" minOccurs="0"
                                         maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
@@ -98,8 +93,8 @@
 
     <xs:complexType name="NoticeHitType">
         <xs:sequence>
-            <xs:element name="Item" type="cf:NoticeIndex"/>
             <xs:element name="Score" type="xs:float"/>
+            <xs:element name="Item" type="NoticeIndex"/>
         </xs:sequence>
     </xs:complexType>
 
