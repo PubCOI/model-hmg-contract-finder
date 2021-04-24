@@ -236,8 +236,6 @@
                 <configuration>
                     <schemaDirectory>src/main/xsd</schemaDirectory>
                     <bindingDirectory>src/main/xjb</bindingDirectory>
-                    <forceRegenerate>true</forceRegenerate>
-                    <removeOldOutput>false</removeOldOutput>
                     <args>
                         <arg>-Xfluent-api</arg>
                     </args>
@@ -259,6 +257,24 @@
                         <configuration>
                             <schemaIncludes>BaseTypes.xsd</schemaIncludes>
                             <bindingIncludes>BaseTypes.xjb</bindingIncludes>
+                            <episodeFile>${build.directory}/META-INF/BaseTypes.episode</episodeFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>cf-schema</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <schemaIncludes>ContractFinderSchema.xsd</schemaIncludes>
+                            <bindingIncludes>
+                                <include>global.xjb</include>
+                                <include>ContractFinderSchema.xjb</include>
+                            </bindingIncludes>
+                            <removeOldOutput>false</removeOldOutput>
+                            <forceRegenerate>true</forceRegenerate>
+                            <episodeFile>${build.directory}/META-INF/ContractFinderSchema.episode</episodeFile>
+                            <removeOldOutput>false</removeOldOutput>
                         </configuration>
                     </execution>
                     <execution>
@@ -272,32 +288,29 @@
                                 <include>global.xjb</include>
                                 <include>SearchRequestSchema.xjb</include>
                             </bindingIncludes>
+                            <removeOldOutput>false</removeOldOutput>
+                            <forceRegenerate>true</forceRegenerate>
+                            <episodeFile>${build.directory}/META-INF/SearchRequestSchema.episode</episodeFile>
+                            <removeOldOutput>false</removeOldOutput>
                         </configuration>
                     </execution>
-                    <!--                    <execution>-->
-                    <!--                        <id>cf-schema</id>-->
-                    <!--                        <goals>-->
-                    <!--                            <goal>generate</goal>-->
-                    <!--                        </goals>-->
-                    <!--                        <configuration>-->
-                    <!--                            <schemaIncludes>ContractFinderSchema.xsd</schemaIncludes>-->
-                    <!--                            <bindingIncludes>ContractFinderSchema.xjb</bindingIncludes>-->
-                    <!--                            <forceRegenerate>false</forceRegenerate>-->
-                    <!--                            <removeOldOutput>false</removeOldOutput>-->
-                    <!--                        </configuration>-->
-                    <!--                    </execution>-->
-                    <!--                    <execution>-->
-                    <!--                        <id>sres-schema</id>-->
-                    <!--                        <goals>-->
-                    <!--                            <goal>generate</goal>-->
-                    <!--                        </goals>-->
-                    <!--                        <configuration>-->
-                    <!--                            <schemaIncludes>SearchResponseSchema.xsd</schemaIncludes>-->
-                    <!--                            <bindingIncludes>SearchResponseSchema.xjb</bindingIncludes>-->
-                    <!--                            <forceRegenerate>false</forceRegenerate>-->
-                    <!--                            <removeOldOutput>false</removeOldOutput>-->
-                    <!--                        </configuration>-->
-                    <!--                    </execution>-->
+                    <execution>
+                        <id>sres-schema</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <schemaIncludes>SearchResponseSchema.xsd</schemaIncludes>
+                            <bindingIncludes>
+                                <include>global.xjb</include>
+                                <include>SearchResponseSchema.xjb</include>
+                            </bindingIncludes>
+                            <removeOldOutput>false</removeOldOutput>
+                            <forceRegenerate>true</forceRegenerate>
+                            <episodeFile>${build.directory}/META-INF/SearchResponseSchema.episode</episodeFile>
+                            <removeOldOutput>false</removeOldOutput>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

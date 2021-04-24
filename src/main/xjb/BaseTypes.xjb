@@ -23,7 +23,6 @@
     <jaxb:bindings schemaLocation="../xsd/BaseTypes.xsd">
         <jaxb:schemaBindings>
             <jaxb:package name="org.pubcoi.cdm.cf"/>
-
         </jaxb:schemaBindings>
     </jaxb:bindings>
 
