@@ -78,6 +78,7 @@
             <xs:element name="CpvDescriptionExpanded" type="xs:token" minOccurs="0"/>
             <xs:element name="AwardedDate" type="xs:dateTime" minOccurs="0"/>
             <xs:element name="AwardedSupplier" type="xs:token" minOccurs="0"/>
+            <xs:element name="AwardedValue" type="xs:double" nillable="true"/>
             <xs:element name="Coordinates" type="xs:token" minOccurs="0"/>
             <xs:element name="IsSubNotice" type="xs:boolean" minOccurs="0"/>
             <xs:element name="AwardedToSme" type="xs:boolean" minOccurs="0"/>

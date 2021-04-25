@@ -22,7 +22,7 @@
 
     <jaxb:bindings schemaLocation="../xsd/ContractFinderSchema.xsd">
         <jaxb:schemaBindings>
-            <jaxb:package name="org.pubcoi.cdm.cf.core"/>
+            <jaxb:package name="org.pubcoi.cdm.cf"/>
         </jaxb:schemaBindings>
         <jaxb:bindings node="//xs:complexType[@name='AwardsType']//xs:element[@name='AwardDetail']">
             <jaxb:property name="awardDetails"/>

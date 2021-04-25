@@ -22,6 +22,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- note this should not have any parents as we want it to be standalone -->
     <groupId>org.pubcoi.schemas</groupId>
     <artifactId>hmg-contracts-finder</artifactId>
     <version>1.0.1-SNAPSHOT</version>
@@ -256,7 +257,10 @@
                         </goals>
                         <configuration>
                             <schemaIncludes>BaseTypes.xsd</schemaIncludes>
-                            <bindingIncludes>BaseTypes.xjb</bindingIncludes>
+                            <bindingIncludes>
+                                <include>BaseTypes.xjb</include>
+                                <include>jaxb-datetime-bindings.xjb</include>
+                            </bindingIncludes>
                             <episodeFile>${build.directory}/META-INF/BaseTypes.episode</episodeFile>
                         </configuration>
                     </execution>
@@ -269,6 +273,7 @@
                             <schemaIncludes>ContractFinderSchema.xsd</schemaIncludes>
                             <bindingIncludes>
                                 <include>global.xjb</include>
+                                <include>jaxb-datetime-bindings.xjb</include>
                                 <include>ContractFinderSchema.xjb</include>
                             </bindingIncludes>
                             <removeOldOutput>false</removeOldOutput>
@@ -286,6 +291,7 @@
                             <schemaIncludes>SearchRequestSchema.xsd</schemaIncludes>
                             <bindingIncludes>
                                 <include>global.xjb</include>
+                                <include>jaxb-datetime-bindings.xjb</include>
                                 <include>SearchRequestSchema.xjb</include>
                             </bindingIncludes>
                             <removeOldOutput>false</removeOldOutput>
@@ -303,6 +309,7 @@
                             <schemaIncludes>SearchResponseSchema.xsd</schemaIncludes>
                             <bindingIncludes>
                                 <include>global.xjb</include>
+                                <include>jaxb-datetime-bindings.xjb</include>
                                 <include>SearchResponseSchema.xjb</include>
                             </bindingIncludes>
                             <removeOldOutput>false</removeOldOutput>

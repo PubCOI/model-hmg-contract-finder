@@ -21,14 +21,16 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
     <xs:include schemaLocation="BaseTypes.xsd"/>
-    
-    <xs:element name="ArrayOfFullNotice">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="FullNotice" type="FullNotice" minOccurs="0" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+
+    <xs:element name="ArrayOfFullNotice" type="ArrayOfFullNotice"/>
+
+    <xs:complexType name="ArrayOfFullNotice">
+        <xs:sequence>
+            <xs:element ref="FullNotice" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="FullNotice" type="FullNotice"/>
 
     <xs:complexType name="FullNotice">
         <xs:sequence>
