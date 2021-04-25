@@ -24,6 +24,9 @@
         <jaxb:schemaBindings>
             <jaxb:package name="org.pubcoi.cdm.cf"/>
         </jaxb:schemaBindings>
+        <jaxb:bindings node="//xs:element[@name='ArrayOfFullNotice']//xs:sequence//xs:element[@ref='FullNotice']">
+            <jaxb:property name="notices"/>
+        </jaxb:bindings>
         <jaxb:bindings node="//xs:complexType[@name='AwardsType']//xs:element[@name='AwardDetail']">
             <jaxb:property name="awardDetails"/>
         </jaxb:bindings>

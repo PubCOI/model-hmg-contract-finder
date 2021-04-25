@@ -29,6 +29,10 @@
         version="2.1">
 
     <jxb:globalBindings>
+
+        <!-- add roots to all elements -->
+        <xjc:simple/>
+
         <!-- Avoid having to work with XMLGregorianCalendar.
              Instead, map as follows:
 
