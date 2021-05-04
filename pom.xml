@@ -261,7 +261,7 @@
                                 <include>BaseTypes.xjb</include>
                                 <include>jaxb-datetime-bindings.xjb</include>
                             </bindingIncludes>
-                            <episodeFile>${build.directory}/META-INF/BaseTypes.episode</episodeFile>
+                            <episodeFile>${project.build.directory}/META-INF/BaseTypes.episode</episodeFile>
                         </configuration>
                     </execution>
                     <execution>
@@ -278,7 +278,7 @@
                             </bindingIncludes>
                             <removeOldOutput>false</removeOldOutput>
                             <forceRegenerate>true</forceRegenerate>
-                            <episodeFile>${build.directory}/META-INF/ContractFinderSchema.episode</episodeFile>
+                            <episodeFile>${project.build.directory}/META-INF/ContractFinderSchema.episode</episodeFile>
                             <removeOldOutput>false</removeOldOutput>
                         </configuration>
                     </execution>
@@ -296,7 +296,7 @@
                             </bindingIncludes>
                             <removeOldOutput>false</removeOldOutput>
                             <forceRegenerate>true</forceRegenerate>
-                            <episodeFile>${build.directory}/META-INF/SearchRequestSchema.episode</episodeFile>
+                            <episodeFile>${project.build.directory}/META-INF/SearchRequestSchema.episode</episodeFile>
                             <removeOldOutput>false</removeOldOutput>
                         </configuration>
                     </execution>
@@ -314,7 +314,7 @@
                             </bindingIncludes>
                             <removeOldOutput>false</removeOldOutput>
                             <forceRegenerate>true</forceRegenerate>
-                            <episodeFile>${build.directory}/META-INF/SearchResponseSchema.episode</episodeFile>
+                            <episodeFile>${project.build.directory}/META-INF/SearchResponseSchema.episode</episodeFile>
                             <removeOldOutput>false</removeOldOutput>
                         </configuration>
                     </execution>
