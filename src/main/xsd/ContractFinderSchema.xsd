@@ -56,15 +56,15 @@
 
     <xs:complexType name="ContactDetailsType">
         <xs:sequence>
-            <xs:element name="Name" type="xs:string" nillable="true"/>
+            <xs:element name="Name" type="xs:string" minOccurs="0"/>
             <xs:element name="Email" type="xs:string" minOccurs="0"/>
             <xs:element name="Address1" type="xs:string" minOccurs="0"/>
-            <xs:element name="Address2" type="xs:string" nillable="true"/>
+            <xs:element name="Address2" type="xs:string" minOccurs="0"/>
             <xs:element name="Town" type="xs:string" minOccurs="0"/>
             <xs:element name="Postcode" type="xs:string" minOccurs="0"/>
-            <xs:element name="Country" type="xs:string" nillable="true"/>
-            <xs:element name="Phone" type="xs:string" nillable="true"/>
-            <xs:element name="WebAddress" type="xs:string" nillable="true"/>
+            <xs:element name="Country" type="xs:string" minOccurs="0"/>
+            <xs:element name="Phone" type="xs:string" minOccurs="0"/>
+            <xs:element name="WebAddress" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -78,7 +78,7 @@
     <xs:complexType name="NoticeType">
         <xs:sequence>
             <xs:group ref="NoticeBase"/>
-            <xs:element name="ParentIdentifier" type="uuid" nillable="true"/>
+            <xs:element name="ParentIdentifier" type="uuid" minOccurs="0"/>
             <xs:element name="LinkReason" type="xs:string" minOccurs="0"/>
             <xs:element name="Version" type="xs:int" minOccurs="0"/>
             <xs:element name="ContactDetails" type="ContactDetailsType"/>
@@ -100,9 +100,9 @@
                 </xs:annotation>
             </xs:element>
             <xs:element name="SupplyChain" type="xs:boolean"/>
-            <xs:element name="ProcedureType" type="xs:token" nillable="true"/>
-            <xs:element name="ProcedureTypeOther" type="xs:token" nillable="true"/>
-            <xs:element name="ProcedureAcceleratedJustification" type="xs:string" nillable="true"/>
+            <xs:element name="ProcedureType" type="xs:token" minOccurs="0"/>
+            <xs:element name="ProcedureTypeOther" type="xs:token" minOccurs="0"/>
+            <xs:element name="ProcedureAcceleratedJustification" type="xs:string" minOccurs="0"/>
             <xs:element name="OjeuContractType" type="OjeuContractTypeEnum"/>
             <xs:element name="IsFrameworkAgreement" type="xs:boolean"/>
             <xs:element name="IsExtensionPossible" type="xs:boolean"/>
@@ -121,32 +121,32 @@
         <xs:sequence>
             <xs:element name="Id" type="xs:token"/>
             <xs:element name="NoticeId" type="uuid"/>
-            <xs:element name="ParentId" type="uuid" nillable="true"/>
+            <xs:element name="ParentId" type="uuid" minOccurs="0"/>
             <xs:element name="Value" type="xs:long"/>
-            <xs:element name="SupplierName" type="xs:token"/>
-            <xs:element name="SupplierAddress" type="xs:string"/>
-            <xs:element name="Contact" type="xs:string" nillable="true"/>
-            <xs:element name="DunsNumber" type="xs:token" minOccurs="0" nillable="true"/>
+            <xs:element name="SupplierName" type="xs:token" minOccurs="0"/>
+            <xs:element name="SupplierAddress" type="xs:string" minOccurs="0"/>
+            <xs:element name="Contact" type="xs:string" minOccurs="0"/>
+            <xs:element name="DunsNumber" type="xs:token" minOccurs="0"/>
             <xs:element name="StartDate" type="xs:dateTime"/>
             <xs:element name="EndDate" type="xs:dateTime"/>
             <xs:element name="AwardedDate" type="xs:dateTime"/>
-            <xs:element name="Reference" type="xs:token"/>
-            <xs:element name="ReferenceType" type="ReferenceTypeE"/>
-            <xs:element name="AwardedProcedureType" type="xs:token">
+            <xs:element name="Reference" type="xs:token" minOccurs="0"/>
+            <xs:element name="ReferenceType" type="ReferenceTypeE" minOccurs="0"/>
+            <xs:element name="AwardedProcedureType" type="xs:token" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation>
                         Other, CallOffFromFrameworkAgreement
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="AwardedProcedureTypeOther" type="xs:token" nillable="true"/>
-            <xs:element name="AwardedProcedureAcceleratedJustification" type="xs:string" nillable="true"/>
-            <xs:element name="AnnexDOptionType" type="xs:token" nillable="true"/>
-            <xs:element name="ReasonContractLawful" type="xs:string" nillable="true" minOccurs="0"/>
-            <xs:element name="AdditionalDetail" type="xs:string" nillable="true"/>
-            <xs:element name="AwardedToSME" type="xs:boolean"/>
-            <xs:element name="AwardedToVCSO" type="xs:boolean"/>
-            <xs:element name="AwardGuid" type="uuid"/>
+            <xs:element name="AwardedProcedureTypeOther" type="xs:token" minOccurs="0"/>
+            <xs:element name="AwardedProcedureAcceleratedJustification" type="xs:string" minOccurs="0"/>
+            <xs:element name="AnnexDOptionType" type="xs:token" minOccurs="0"/>
+            <xs:element name="ReasonContractLawful" type="xs:string" minOccurs="0"/>
+            <xs:element name="AdditionalDetail" type="xs:string" minOccurs="0"/>
+            <xs:element name="AwardedToSME" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="AwardedToVCSO" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="AwardGuid" type="uuid" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -185,12 +185,12 @@
             <xs:element name="NoticeId" type="uuid"/>
             <xs:element name="Description" type="xs:string"/>
             <xs:element name="DataType" type="xs:token"/>
-            <xs:element name="TextData" type="xs:string" nillable="true"/>
+            <xs:element name="TextData" type="xs:string" minOccurs="0"/>
             <xs:element name="Link" type="xs:token" minOccurs="0"/>
-            <xs:element name="MimeType" type="xs:token" nillable="true"/>
-            <xs:element name="Filename" type="xs:token" nillable="true"/>
-            <xs:element name="FileContent" type="xs:byte" nillable="true"/>
-            <xs:element name="AwardGuid" type="uuid" nillable="true"/>
+            <xs:element name="MimeType" type="xs:token" minOccurs="0"/>
+            <xs:element name="Filename" type="xs:token" minOccurs="0"/>
+            <xs:element name="FileContent" type="xs:byte" minOccurs="0"/>
+            <xs:element name="AwardGuid" type="uuid" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
