@@ -33,21 +33,21 @@
 
     <xs:complexType name="SearchCriteriaType">
         <xs:sequence>
-            <xs:element name="ApproachMarketFrom" type="xs:date"  minOccurs="0"/>
-            <xs:element name="ApproachMarketTo" type="xs:date"  minOccurs="0"/>
-            <xs:element name="AwardedFrom" type="xs:date"  minOccurs="0"/>
-            <xs:element name="AwardedTo" type="xs:date"  minOccurs="0"/>
-            <xs:element name="DeadlineFrom" type="xs:date"  minOccurs="0"/>
-            <xs:element name="DeadlineTo" type="xs:date"  minOccurs="0"/>
-            <xs:element name="IsSubcontract" type="xs:boolean"  minOccurs="0"/>
+            <xs:element name="ApproachMarketFrom" type="xs:date" minOccurs="0"/>
+            <xs:element name="ApproachMarketTo" type="xs:date" minOccurs="0"/>
+            <xs:element name="AwardedFrom" type="xs:date" minOccurs="0"/>
+            <xs:element name="AwardedTo" type="xs:date" minOccurs="0"/>
+            <xs:element name="DeadlineFrom" type="xs:date" minOccurs="0"/>
+            <xs:element name="DeadlineTo" type="xs:date" minOccurs="0"/>
+            <xs:element name="IsSubcontract" type="xs:boolean" minOccurs="0"/>
             <xs:element name="Keyword" type="xs:token"/>
-            <xs:element name="LastNotifiableUpdateFrom" type="xs:date"  minOccurs="0"/>
-            <xs:element name="Postcode" type="xs:token"  minOccurs="0"/>
-            <xs:element name="PublishedFrom" type="xs:date"  minOccurs="0"/>
-            <xs:element name="PublishedTo" type="xs:date"  minOccurs="0"/>
-            <xs:element name="QueryString" type="xs:token"  minOccurs="0"/>
-            <xs:element name="Radius" type="xs:float"  minOccurs="0"/>
-            <xs:element name="Regions" type="xs:token"  minOccurs="0"/>
+            <xs:element name="LastNotifiableUpdateFrom" type="xs:date" minOccurs="0"/>
+            <xs:element name="Postcode" type="xs:token" minOccurs="0"/>
+            <xs:element name="PublishedFrom" type="xs:date" minOccurs="0"/>
+            <xs:element name="PublishedTo" type="xs:date" minOccurs="0"/>
+            <xs:element name="QueryString" type="xs:token" minOccurs="0"/>
+            <xs:element name="Radius" type="xs:float" minOccurs="0"/>
+            <xs:element name="Regions" type="xs:token" minOccurs="0"/>
             <xs:element name="Statuses">
                 <xs:complexType>
                     <xs:sequence>
@@ -59,7 +59,7 @@
             <xs:element name="SuitableForVco" type="xs:boolean" minOccurs="0"/>
             <xs:element name="AwardedToSme" type="xs:boolean" minOccurs="0"/>
             <xs:element name="AwardedToVcse" type="xs:boolean" minOccurs="0"/>
-            <xs:element name="Types"  minOccurs="0">
+            <xs:element name="Types" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="NoticeType" type="NoticeTypeEnum" minOccurs="0" maxOccurs="unbounded"/>

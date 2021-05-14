@@ -15,9 +15,8 @@
   ~ along with this program; if not, write to the Free Software Foundation,
   ~ Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
   -->
-<jaxb:bindings version="2.1"
-               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
-               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               version="2.1">
 
     <jaxb:bindings schemaLocation="../xsd/SearchRequestSchema.xsd">
         <jaxb:schemaBindings>
